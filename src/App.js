@@ -1,4 +1,11 @@
 import React, { useState } from 'react';
+import styled from 'styled-components'
+
+// components
+import Lamp from './Lamp';
+import LightSwitch from './LightSwitch'
+
+
 
 
 const App = ()=> {
@@ -14,14 +21,19 @@ const handleLightSwitchTwo=() => setIsLampTwoOn(prev =>!prev);
     <Room>
 <Lamp lampOn={{isLampOneOn}} position='left'/>
 <Lamp lampOn={{isLampTwoOn}} position='right'/>
+
 <LightSwitch
 name='one'
 callback={handleLightSwitchOne}
 switchON={isLampOneOn}
 position= 'left'
-
 />
-
+<LightSwitch
+name='two'
+callback={handleLightSwitchTwo}
+switchON={isLampTwoOn}
+position= 'right'
+/>
 
     </Room>,
 
