@@ -17,3 +17,5 @@ const Lamp =({lampOn,position})=>(
         <div/>
     </Wrapper>
 )
+
+export default Lamp;
