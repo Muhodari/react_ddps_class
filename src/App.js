@@ -14,6 +14,13 @@ const handleLightSwitchTwo=() => setIsLampTwoOn(prev =>!prev);
     <Room>
 <Lamp lampOn={{isLampOneOn}} position='left'/>
 <Lamp lampOn={{isLampTwoOn}} position='right'/>
+<LightSwitch
+name='one'
+callback={handleLightSwitchOne}
+switchON={isLampOneOn}
+position= 'left'
+
+/>
 
 
     </Room>,
