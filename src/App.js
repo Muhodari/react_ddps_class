@@ -5,6 +5,15 @@ import styled from 'styled-components'
 import Lamp from './Lamp';
 import LightSwitch from './LightSwitch'
 
+const Room = styled.div`
+position:relative;
+width:500px;
+height:500px;
+border:10px solid black;
+margin: 0 auto;
+
+
+`;
 
 
 
