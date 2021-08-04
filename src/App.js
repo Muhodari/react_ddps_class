@@ -1,16 +1,17 @@
 import React from 'react';
-
+//components 
+import Header from './components/Header'; 
 // styles
 import { GlobalStyle } from './GlobalStyle';
 
 
 
 const App = ()=> {
-  // lamp one
 
   return (
 
     <div className="App">
+      <Header/>
       Start here.
       <GlobalStyle />
     </div>
