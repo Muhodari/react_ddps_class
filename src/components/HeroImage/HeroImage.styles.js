@@ -33,8 +33,8 @@ max-width: var(--maxWidth);
 margin: 0 auto;
 
 
-
 `;
+
 export const Text = styled.div`
 z-index: 100px;
 max-width: 700px;
@@ -42,7 +42,7 @@ position: absolute;
 bottom: 40px;
 margin-right: 20px;
 min-height: 100px;
-color:var(--white);
+/* color:var(--white); */
 
 h1{
     font-size: var(--fontSuperBig);
@@ -66,6 +66,21 @@ p{
 width: 100%;
 }
 
-
-
 `;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
