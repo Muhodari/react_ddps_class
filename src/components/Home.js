@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 //  API
 import API from '../API'
 // config
@@ -23,7 +23,7 @@ return (
     image={ `${IMAGE_BASE_URL} ${BACKDROP_SIZE} ${state.results[0].backdrop_path}`}
     title={state.results[0].original_title}
     text ={state.results[0].overview}
-    
+
     /> 
 ):null
 
