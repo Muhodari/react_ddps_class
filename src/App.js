@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import styled from 'styled-components'
+import React from 'react';
+
+// styles
+import { GlobalStyle } from './GlobalStyle';
 
 
 
@@ -10,6 +12,7 @@ const App = ()=> {
 
     <div className="App">
       Start here.
+      <GlobalStyle />
     </div>
   );
 }
