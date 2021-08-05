@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
         --fontSuperBig:2.5rem;
         --fontBig:1.5rem;
         --fontMed:1rem;
+        --fontSmall:0.5rem;
     }
     *{
         box-sizing:border-box;
