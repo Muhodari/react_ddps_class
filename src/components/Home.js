@@ -8,6 +8,7 @@ import HeroImage from './HeroImage';
 import Grid from './Grid';
 import Thumb from './Thumb';
 import Spinner from './Spinner';
+import SearcBar from './SearchBar';
 
 // Hooks
 import { useHomeFetch } from './hooks/useHomeFetch';
@@ -31,10 +32,12 @@ return (
     /> 
 ):null}
 
+ {/* search bar */}
+ <SearcBar
+ />
+
 <Grid header='Popular movies'>
     {state.results.map( movie => (
-//    <div key={movie.id}> {movie.title} </div>,
-
    <Thumb  
    key={movie.id}
    clickable
