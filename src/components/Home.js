@@ -17,7 +17,7 @@ import { useHomeFetch } from './hooks/useHomeFetch';
 import NoImage from '../images/no_image.jpg'
 
 const Home =() => {
-const{state,loading,error} = useHomeFetch();
+const{state,loading,error,setSearchTerm} = useHomeFetch();
 
 console.log(state)
 return (
@@ -33,7 +33,7 @@ return (
 ):null}
 
  {/* search bar */}
- <SearcBar
+ <SearcBar setSearchTerm={setSearchTerm}
  />
 
 <Grid header='Popular movies'>
