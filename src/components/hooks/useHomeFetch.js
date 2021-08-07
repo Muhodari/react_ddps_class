@@ -47,8 +47,8 @@ export const useHomeFetch = ()=>{
     
     },[searchTerm])
 
-// // load more 
 
+    // // load more 
 
 useEffect(()=>{
 if(!isLoadingMore) return ;
