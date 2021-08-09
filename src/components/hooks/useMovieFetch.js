@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect,useCallback } from "react";
 import API from '../../API'
 
 export const useMovieFetch =movieId =>{
@@ -8,7 +8,7 @@ export const useMovieFetch =movieId =>{
     const[error , setError]= useState(false)
 
 // fetch movie function
-    const fetchMovie =async()=>{
+    const fetchMovie =useCallback(async()=>{
 
         try{
           setLoading(true)
@@ -31,12 +31,11 @@ export const useMovieFetch =movieId =>{
                 setError(true)
             }
         
-        }
-
+        },[movieId]);
 
 useEffect(()=>{
 fetchMovie();
-    },[movieId]);
+    },[movieId,fetchMovie]);
 
     return {state,loading,error}
 
