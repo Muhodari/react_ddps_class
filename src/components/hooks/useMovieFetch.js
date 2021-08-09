@@ -17,19 +17,24 @@ try{
   const movie = await API.fetchMovie(movieId);
   const credits= await API.fetchCredits(movieId);
   
+  //   get directors only   
+   const directors = credits.crew.filter(
+       member => member.job === 'Director'
+   );
 
-
-
-
+   setState({
+       ...movie,
+       actors: credits.cast,
+       directors
+   })
     }
     catch(error){
         setError(true)
     }
-     
-
 
 }
+    },[movieId]);
 
-    },[movieId])
+    return {state,loading,error}
 
 }
