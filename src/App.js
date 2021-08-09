@@ -11,11 +11,16 @@ import { GlobalStyle } from './GlobalStyle';
 
 const App=() =>(
 
-    <div className="App">
+    <Router>
       <Header/>
-      <Home/>
+
+      <Routes>
+<Route path='/' element={<Home/>} />
+      </Routes>
+
+      
       <GlobalStyle />
-    </div>
+    </Router>
   );
 
 
