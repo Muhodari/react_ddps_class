@@ -1,4 +1,6 @@
 import React from 'react';
+// routing
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 //components 
 import Header from './components/Header'; 
 import Home from './components/Home';
@@ -7,9 +9,7 @@ import { GlobalStyle } from './GlobalStyle';
 
 
 
-const App = ()=> {
-
-  return (
+const App=() =>(
 
     <div className="App">
       <Header/>
@@ -17,6 +17,6 @@ const App = ()=> {
       <GlobalStyle />
     </div>
   );
-}
+
 
 export default App;
