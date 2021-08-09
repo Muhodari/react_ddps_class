@@ -1,4 +1,5 @@
 import react from 'react'
+import { useParams } from 'react-router';
 // config 
 import { IMAGE_BASE_URL, POSTER_SIZE} from '../config';
 
@@ -11,8 +12,12 @@ import { useMovieFetch } from './hooks/useMovieFetch';
 import NoImage from '../images/no_image.jpg'
 
 const Movie = () => {
+
+  const {movieId} =useParams();
+
   const {state: movie,loading,error} = useMovieFetch(movieId)
 
+//   console.log(movieId)
 return(
     <>
     <div>Movie</div>
