@@ -6,10 +6,10 @@ align-items: center;
 justify-content: center;
 width: 100%;
 height: 70px;
-background: #4A4F4F;
+background: var(--medGrey);
 color :var(--white);
-
 `;
+
 
 export const Content = styled.div`
 

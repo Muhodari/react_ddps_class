@@ -5,7 +5,7 @@ import { calcTime , convertMoney} from '../../helpers'
 // styles
 import { Wrapper , Content } from './MovieInfoBar.styles'
 
-const MovieInfoBar = ({time , Budget ,revenue }) => (
+const MovieInfoBar = ({time , budget ,revenue }) => (
 <Wrapper>
     <Content>
   <div className='column'>
@@ -13,7 +13,7 @@ const MovieInfoBar = ({time , Budget ,revenue }) => (
   </div>
 
   <div className='column'>
-      <p>Budget: {convertMoney(Budget)}</p>
+      <p>Budget: {convertMoney(budget)}</p>
   </div>
   <div className='column'>
       <p>Revenue: {convertMoney(revenue)}</p>
