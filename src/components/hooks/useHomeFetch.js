@@ -1,5 +1,7 @@
 import { useState,useEffect} from "react";
 import API from '../../API'
+// helpers
+import { isPersistedState } from "../../helpers";
 
 const initialState ={
     page:0,
@@ -19,7 +21,7 @@ export const useHomeFetch = ()=>{
 
 
     
-    const fetchMovies = async(page,searchTerm="")=>{
+const fetchMovies = async(page,searchTerm="")=>{
         try{
        setError(false)
        setLoading(true)
@@ -41,7 +43,17 @@ export const useHomeFetch = ()=>{
     
     //  initial & search 
     
-    useEffect( ()=>{
+useEffect( ()=>{
+     if (!searchTerm){
+         const sessionState = isPersistedState('homeStae')
+
+         if(sessionState){
+             return;
+         }
+
+
+     }     
+
     setState(initialState);
     fetchMovies(1,searchTerm);
     
