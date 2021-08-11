@@ -26,6 +26,7 @@ export const useMovieFetch =movieId =>{
                actors: credits.cast,
                directors
            })
+           setLoading(false);
             }
             catch(error){
                 setError(true)
