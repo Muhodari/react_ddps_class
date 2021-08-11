@@ -14,9 +14,11 @@ display: flex;
 max-width: var(--maxWidth);
 width: 100%;
 margin: 0 auto;
+
 p{
-    color: var(--white);
+ color: var(--white);
 }
+
 .column{
     display: flex;
     align-items: center;
