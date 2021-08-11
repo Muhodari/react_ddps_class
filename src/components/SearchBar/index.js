@@ -1,4 +1,5 @@
 import React,{useState,useEffect,useRef} from 'react'
+import propTypes from 'prop-types'
 // styles
 import { Wrapper,Content } from './SearchBar.styles'
 // image 
@@ -40,4 +41,9 @@ return(
 )
 
 }
+
+SearcBar.propTypes = {
+    callback:propTypes.func
+}
+
 export default SearcBar
