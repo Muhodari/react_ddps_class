@@ -1,5 +1,7 @@
 import { useState,useEffect,useCallback } from "react";
 import API from '../../API'
+// helpers
+import { isPersistedState } from "../../helpers";
 
 export const useMovieFetch =movieId =>{
 
@@ -35,7 +37,21 @@ export const useMovieFetch =movieId =>{
         },[movieId]);
 
 useEffect(()=>{
+
+
+const sessionState = isPersistedState(movieId);
+if(sessionState){
+    setState(sessionState);
+    setLoading(false);
+    
+    return;
+}
+
+
+
+
 fetchMovie();
+
     },[movieId,fetchMovie]);
 
     return {state,loading,error}

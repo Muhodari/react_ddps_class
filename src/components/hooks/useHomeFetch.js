@@ -44,7 +44,7 @@ const fetchMovies = async(page,searchTerm="")=>{
     //  initial & search 
     
 useEffect( ()=>{
-    s
+    
      if (!searchTerm){
          const sessionState = isPersistedState('homeStae')
 
