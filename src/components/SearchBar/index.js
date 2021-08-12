@@ -1,30 +1,35 @@
-import React,{useState,useEffect,useRef} from 'react'
+import React,{Component} from 'react'
 import propTypes from 'prop-types'
 // styles
 import { Wrapper,Content } from './SearchBar.styles'
 // image 
 import searchIcon from '../../images/search-icon.svg';
 
-const SearcBar = ({setSearchTerm,})=>{
-    const [state,setState]=useState('')
-    const initial = useRef(true)
-
-
-
-useEffect(()=>{
-
-    if(initial.current){
-        initial.current=false;
-        return;
-    }
+class SearcBar extends Component {
     
- const timer = setTimeout(()=>{
-    setSearchTerm(state);
-   },500)
-  
-   return ()=>clearTimeout(timer)
+ state = {value:''};
+ timeout=null;
 
-},[setSearchTerm,state])
+componentDidUpdate(_prevProps, prevState){
+
+    if(this.state.value !==prevState.value){
+   const {setSearchTerm} =this.props;
+
+     clearTimeout(this.timeout)
+
+   this.timeout= setTimeout(()=>{
+       const {value} =this.state
+    setSearchTerm(value);
+   },500)
+
+    }
+
+}
+
+
+ 
+  
+ 
 
 return(
     <Wrapper>
