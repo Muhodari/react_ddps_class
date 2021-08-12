@@ -22,28 +22,34 @@ componentDidUpdate(_prevProps, prevState){
     setSearchTerm(value);
    },500)
 
-    }
-
+    
+}
 }
 
+
+render(){
+    const {value} = this.state;
+    
+    return(
+        <Wrapper>
+            <Content>
+                <img src={searchIcon} alt='seach-icon'/>
+                <input 
+                type='text' 
+                placeholder='Search Movie'
+                onChange={event =>this.setState({value:event.currentTarget.value})}
+                value={value}
+                />
+            </Content>
+        </Wrapper>
+    )
+    
+}
 
  
   
  
 
-return(
-    <Wrapper>
-        <Content>
-            <img src={searchIcon} alt='seach-icon'/>
-            <input 
-            type='text' 
-            placeholder='Search Movie'
-            onChange={event =>setState(event.currentTarget.value)}
-            value={state}
-            />
-        </Content>
-    </Wrapper>
-)
 
 }
 
