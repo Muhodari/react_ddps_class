@@ -44,16 +44,18 @@ const fetchMovies = async(page,searchTerm="")=>{
     //  initial & search 
     
 useEffect( ()=>{
+    s
      if (!searchTerm){
          const sessionState = isPersistedState('homeStae')
 
          if(sessionState){
+             console.log('Grabbing from sessionStorage')
+             setState(sessionState)
              return;
          }
-
-
      }     
 
+     console.log('Grabbing From API')
     setState(initialState);
     fetchMovies(1,searchTerm);
     
@@ -69,7 +71,15 @@ fetchMovies(state.page + 1 , searchTerm)
 setIsLoadingMore(false)
 
 },[isLoadingMore,searchTerm, state.page])
-    
+
+
+// Write to session storage
+useEffect(()=>{
+    if(!searchTerm) sessionStorage.setItem('homeState', JSON.stringify(state));
+
+},[searchTerm,state])
+
+
 return {state,loading,error,searchTerm,setSearchTerm,setIsLoadingMore}
 }
 
