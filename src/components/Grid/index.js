@@ -13,6 +13,6 @@ const Grid = ({header,children}) =>(
 )
 
 Grid.propTypes = {
-  header: propTypes.string
+   header: propTypes.string
 }
 export default Grid;
