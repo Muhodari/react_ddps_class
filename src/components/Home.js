@@ -40,8 +40,10 @@ return (
 
     text ={state.results[0].overview}
 
+    
     /> 
 ):null}
+
 
  {/* search bar */}
  <SearcBar setSearchTerm={setSearchTerm}
