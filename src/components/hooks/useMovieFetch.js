@@ -43,7 +43,7 @@ const sessionState = isPersistedState(movieId);
 if(sessionState){
     setState(sessionState);
     setLoading(false);
-    
+
     return;
 }
 
@@ -53,6 +53,12 @@ if(sessionState){
 fetchMovie();
 
     },[movieId,fetchMovie]);
+
+    // write to sessionStorage
+    useEffect(()=>{
+   sessionStorage.setItem(movieId, JSON.stringify(state))
+
+    },[movieId,state])
 
     return {state,loading,error}
 
