@@ -66,56 +66,60 @@ handleSearch = searchTerm =>
  handleLoadingMore = () =>
     this.fetchMovies(this.state.movies.page + 1, this.state.searchTerm);
   
+
+render(){
+    if(error) return <div>something went wrong...</div>
+
+    return (
+    <>
+    {!searchTerm && state.results[0]? (
+        <HeroImage 
+        image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
+        title={state.results[0].original_title}
     
+        text ={state.results[0].overview}
+    
+        
+        /> 
+    ):null}
+    
+    
+     {/* search bar */}
+     <SearcBar setSearchTerm={setSearchTerm}
+     />
+    
+    <Grid header={searchTerm ? 'Search Results':'Popular movies'}>
+        {state.results.map( movie => (
+       <Thumb  
+       key={movie.id}
+       clickable
+       image={
+           movie.poster_path 
+           ? IMAGE_BASE_URL +POSTER_SIZE +movie.poster_path
+           :NoImage
+       }
+        movieId={movie.id}
+        />
+    
+    
+    
+    
+        ))}
+    
+    </Grid>
+    {loading && <Spinner/> }
+    
+    {state.page < state.total_pages && !loading && (
+        <Button text='Load More' callback={()=> setIsLoadingMore(true)} />
+    )}
+    </>
+    )
+}
+
 
 // console.log(state)
 
-if(error) return <div>something went wrong...</div>
 
-return (
-<>
-{!searchTerm && state.results[0]? (
-    <HeroImage 
-    image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
-    title={state.results[0].original_title}
-
-    text ={state.results[0].overview}
-
-    
-    /> 
-):null}
-
-
- {/* search bar */}
- <SearcBar setSearchTerm={setSearchTerm}
- />
-
-<Grid header={searchTerm ? 'Search Results':'Popular movies'}>
-    {state.results.map( movie => (
-   <Thumb  
-   key={movie.id}
-   clickable
-   image={
-       movie.poster_path 
-       ? IMAGE_BASE_URL +POSTER_SIZE +movie.poster_path
-       :NoImage
-   }
-    movieId={movie.id}
-    />
-
-
-
-
-    ))}
-
-</Grid>
-{loading && <Spinner/> }
-
-{state.page < state.total_pages && !loading && (
-    <Button text='Load More' callback={()=> setIsLoadingMore(true)} />
-)}
-</>
-)
 
 }
 
