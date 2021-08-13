@@ -1,4 +1,5 @@
-import react from 'react'
+import react,{Component} from 'react'
+import API from '../API'
 import { useParams } from 'react-router';
 // config 
 import { IMAGE_BASE_URL, POSTER_SIZE} from '../config';
@@ -10,16 +11,49 @@ import BreadCrumb from './BreadCrumb';
 import MovieInfo from './MovieInfo';
 import MovieInfoBar from './MovieInfoBar';
 import Actor from './Actor';
-// hook
-import { useMovieFetch } from './hooks/useMovieFetch';
 // image
 import NoImage from '../images/no_image.jpg'
 
-const Movie = () => {
+class Movie extends Component{
 
-  const {movieId} =useParams();
+state = {
+  movie:{},
+  loading:true,
+  error:false,
+}
 
-  const {state: movie,loading,error} = useMovieFetch(movieId)
+// fetch movie function
+fetchMovie =async ()=>{
+ const {movieId} = this.props.params;
+ 
+  try{
+    this.setState({error:false,loading:true})
+
+    const movie = await API.fetchMovie(movieId);
+    const credits= await API.fetchCredits(movieId);
+    
+    //   get directors only   
+     const directors = credits.crew.filter(
+         member => member.job === 'Director'
+     );
+  
+     setState({
+         ...movie,
+         actors: credits.cast,
+         directors
+     })
+     setLoading(false);
+      }
+      catch(error){
+          setError(true)
+      }
+  
+  };
+
+
+
+
+render(){
 
   if(loading){
     return <Spinner/>;
@@ -51,7 +85,6 @@ return(
  }
  />
 
-
      ))}
 
     </Grid>
@@ -60,6 +93,11 @@ return(
     </>
 )
 
+}
+  
+
 };
 
-export default Movie
+const MovieWithParams = props => <Movie {...props} params={useParams()} />
+
+export default MovieWithParams;
