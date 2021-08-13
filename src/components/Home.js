@@ -60,10 +60,13 @@ state = {
 
 handleSearch = searchTerm =>
     this.setState({movies:initialState,searchTerm}, ()=>
-
     this.fetchMovies(1,this.state.searchTerm)
     )
 
+ handleLoadingMore = () =>
+    this.fetchMovies(this.state.movies.page + 1, this.state.searchTerm);
+  
+    
 
 // console.log(state)
 
