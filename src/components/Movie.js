@@ -25,7 +25,7 @@ state = {
 // fetch movie function
 fetchMovie =async ()=>{
  const {movieId} = this.props.params;
- 
+
   try{
     this.setState({error:false,loading:true})
 
@@ -37,23 +37,30 @@ fetchMovie =async ()=>{
          member => member.job === 'Director'
      );
   
-     setState({
-         ...movie,
+     this.setState({
+      movie:{
+          ...movie,
          actors: credits.cast,
          directors
+        },
+      loading:false,         
      })
-     setLoading(false);
       }
       catch(error){
-          setError(true)
+        this.setState({error:true,loading:false});
       }
   
   };
 
 
+componentDidMount(){
+  this.fetchMovie();
+}
 
 
 render(){
+
+const {movie,loading,error} =this.state;
 
   if(loading){
     return <Spinner/>;
