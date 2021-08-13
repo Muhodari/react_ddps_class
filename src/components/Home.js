@@ -41,7 +41,7 @@ state = {
 
    const movies = await API.fetchMovies(searchTerm,page) 
 
-   setState(prev=>({
+   this.setState(prev=>({
       ...prev,
 
       movies:{
@@ -68,16 +68,18 @@ handleSearch = searchTerm =>
   
 
 render(){
+    const {searchTerm,movies,loading,error} = this.state;
+
     if(error) return <div>something went wrong...</div>
 
     return (
     <>
-    {!searchTerm && state.results[0]? (
+    {!searchTerm && movies.results[0]? (
         <HeroImage 
-        image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
-        title={state.results[0].original_title}
+        image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${movies.results[0].backdrop_path}`}
+        title={movies.results[0].original_title}
     
-        text ={state.results[0].overview}
+        text ={movies.results[0].overview}
     
         
         /> 
@@ -85,11 +87,11 @@ render(){
     
     
      {/* search bar */}
-     <SearcBar setSearchTerm={setSearchTerm}
+     <SearcBar setSearchTerm={this.handleSearch}
      />
     
     <Grid header={searchTerm ? 'Search Results':'Popular movies'}>
-        {state.results.map( movie => (
+        {movies.results.map( movie => (
        <Thumb  
        key={movie.id}
        clickable
@@ -109,18 +111,12 @@ render(){
     </Grid>
     {loading && <Spinner/> }
     
-    {state.page < state.total_pages && !loading && (
-        <Button text='Load More' callback={()=> setIsLoadingMore(true)} />
+    {movies.page < movies.total_pages && !loading && (
+        <Button text='Load More' callback={this.handleLoadingMore} />
     )}
     </>
     )
 }
-
-
-// console.log(state)
-
-
-
 }
 
 export default Home;
