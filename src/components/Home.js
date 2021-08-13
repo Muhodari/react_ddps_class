@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 //  API
 import API from '../API'
 // config
@@ -11,23 +11,61 @@ import Spinner from './Spinner';
 import SearcBar from './SearchBar';
 import Button from './Buttons';
 
-// Hooks
-import { useHomeFetch } from './hooks/useHomeFetch';
+
 
 // Image
 import NoImage from '../images/no_image.jpg'
 
-const Home =() => {
-const{
-    state,
-    loading,
-    error,
-    searchTerm,
-    setSearchTerm,
-    setIsLoadingMore
-} = useHomeFetch();
 
-console.log(state)
+const initialState ={
+    page:0,
+    results:[],
+    total_pages:0,
+    total_results:0,
+};
+
+
+class Home extends Component {
+
+state = {
+    movies:initialState,
+    searchTerm:'',
+    isLoadingMore:false,
+    loading:false,
+    error:false,
+}
+
+ fetchMovies = async(page,searchTerm="")=>{
+    try{
+        this.setState({error:false, loading:true});
+
+   const movies = await API.fetchMovies(searchTerm,page) 
+
+   setState(prev=>({
+      ...prev,
+
+      movies:{
+        ...movies,
+        results:
+        page>1? [...prev.movies.results,...movies.results] : [...movies.results]
+      },
+      loading:false,
+   }))
+    }
+    catch(error){
+      this.setState({error:true,loading:false})         
+}
+};
+
+
+handleSearch = searchTerm =>
+    this.setState({movies:initialState,searchTerm}, ()=>
+
+    this.fetchMovies(1,this.state.searchTerm)
+    )
+
+
+// console.log(state)
 
 if(error) return <div>something went wrong...</div>
 
