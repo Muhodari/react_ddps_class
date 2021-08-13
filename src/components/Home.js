@@ -67,6 +67,10 @@ handleSearch = searchTerm =>
     this.fetchMovies(this.state.movies.page + 1, this.state.searchTerm);
   
 
+componentDidMount(){
+    this.fetchMovies(1);
+}
+
 render(){
     const {searchTerm,movies,loading,error} = this.state;
 
